@@ -2,9 +2,9 @@
     "lavanodes": {
         "nodes": [
             {
-                "host": "lava.link",
-                "port": 80,
-                "password": "youshallnotpass",
+                "host": "lavalink.eu",
+                "port": 2333,
+                "password": "Raccoon",
                 "retryDelay": 5000,
                 "retryAmount": 10,
                 "secure": false

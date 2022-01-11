@@ -40,6 +40,7 @@ client.manager = new Manager({
         new Deezer({}),
         new Apple(),
     ],
+    autoPlay: true,
 });
 
 const guildEvents = readdirSync("./Listeners/Guild").filter((f) => f.endsWith(".js"));

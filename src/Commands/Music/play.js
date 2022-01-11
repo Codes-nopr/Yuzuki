@@ -33,8 +33,9 @@ module.exports = {
         });
 
         if (player.state !== "CONNECTED") player.connect();
+        await player.set("autoplay", false);
 
-        const query = await player.search(args.join(" "), message.member.user);
+        const query = await player.search(args.join(" "), message.member);
 
         // eslint-disable-next-line default-case
         switch (query.loadType) {
@@ -51,16 +52,19 @@ module.exports = {
             case "TRACK_LOADED":
                 player.queue.add(query.tracks[0]);
                 message.channel.createMessage({ content: `${client.emote.ok} Added ${query.tracks[0]?.title ?? "Unknown title"} to the queue.` });
+                if (!player.playing && !player.paused && !player.queue.size) player.play();
             break;
 
             case "PLAYLIST_LOADED":
                 player.queue.add(query.tracks);
                 message.channel.createMessage({ content: `${client.emote.ok} Added ${query.tracks.length} track(s) in the queue.` });
+                if (!player.playing && !player.paused && !player.queue.size) player.play();
             break;
 
             case "SEARCH_RESULT":
                 player.queue.add(query.tracks[0]);
                 message.channel.createMessage({ content: `${client.emote.ok} Added ${query.tracks[0]?.title ?? "Unknown title"} to the queue.` });
+                if (!player.playing && !player.paused && !player.queue.size) player.play();
             break;
         }
 

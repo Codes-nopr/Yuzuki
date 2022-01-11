@@ -8,5 +8,6 @@ module.exports = {
         ok: ":white_check_mark:",
         error: ":x:",
         loading: "",
+        now: ":thumbsup:",
      },
 };
