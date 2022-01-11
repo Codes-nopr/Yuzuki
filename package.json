@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@types/node": "^17.0.8",
+    "better-erela.js-spotify": "^1.2.3",
+    "dotenv": "^11.0.0",
+    "erela.js": "^2.3.3",
+    "erela.js-apple": "^1.2.6",
+    "eris": "^0.16.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4"
+  }
+}
