@@ -3,14 +3,11 @@ const RichEmbed = require("../../Utility/RichEmbed");
 const cooldowns = new Map();
 
 module.exports = async (client, message) => {
-    if (!message.guildID) {
-        const msg = await message.channel.createMessage({ content: `${client.emotes.error} Commands can only run in server not in DM's` });
-        await msg.delete().catch(() => { });
-    }
+    if (!message.guildID) return null;
     if (message.member.user.bot) return null;
 
     const regex = new RegExp(`^<@!?${client.user.id}> `);
-    const prefix = message.content.match(regex) ? message.content.match(regex)[0] : "lov ";
+    const prefix = message.content.match(regex) ? message.content.match(regex)[0] : "?";
 
     try {
         if (!message.content.startsWith(prefix)) return null;
@@ -41,7 +38,7 @@ module.exports = async (client, message) => {
         setTimeout(() => timeStamp.delete(message.author.id), cooldownAmount);
 
         try {
-            command.run(client, message, args);
+            command.run({ client, message, args });
         // eslint-disable-next-line no-empty
         } catch { }
     // eslint-disable-next-line no-empty

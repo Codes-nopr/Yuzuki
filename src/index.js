@@ -5,7 +5,7 @@ const { default: Spotify } = require("better-erela.js-spotify");
 const Apple = require("erela.js-apple");
 const Deezer = require("erela.js-deezer");
 const { readdirSync } = require("fs");
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 
 const client = new Client(process.env.TOKEN, {
     allowedMentions: {
@@ -50,7 +50,7 @@ for (const file of guildEvents) {
     console.log(`Loading guild event: ${file}`);
     // eslint-disable-next-line global-require
     const event = require(`./Listeners/Guild/${file}`);
-    client.on(file.event(".")[0], event.bind(null, client));
+    client.on(file.split(".")[0], event.bind(null, client));
 }
 
 const erelaEvents = readdirSync("./Listeners/Erela").filter((f) => f.endsWith(".js"));
@@ -61,7 +61,20 @@ for (const file of erelaEvents) {
     console.log(`Loading erela event: ${file}`);
     // eslint-disable-next-line global-require
     const event = require(`./Listeners/Erela/${file}`);
-    client.manager.on(file.event(".")[0], event.bind(null, client));
+    client.manager.on(file.split(".")[0], event.bind(null, client));
 }
+
+readdirSync("./Commands").forEach((dirs) => {
+    const msgCommands = readdirSync(`./Commands/${dirs}`);
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const file of msgCommands) {
+        // eslint-disable-next-line no-console
+        console.log(`Loading message command: ${file}`);
+        // eslint-disable-next-line global-require
+        const cmds = require(`./Commands/${dirs}/${file}`);
+        client.commands?.set(cmds?.name, cmds);
+    }
+});
 
 client.connect();
