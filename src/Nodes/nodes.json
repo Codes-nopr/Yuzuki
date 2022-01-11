@@ -1,0 +1,14 @@
+{
+    "lavanodes": {
+        "nodes": [
+            {
+                "host": "localhost",
+                "port": 2333,
+                "password": "youshallnotpass",
+                "retryDelay": 5000,
+                "retryAmount": 10,
+                "secure": false
+            }
+        ]
+    }
+}
