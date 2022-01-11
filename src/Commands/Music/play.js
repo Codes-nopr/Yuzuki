@@ -21,7 +21,7 @@ module.exports = {
             }
         }
 
-        if (!args.join(" ")) return message.channel.createMessage({ content: `${client.emote.error} Please provide a track or playlist to play` });
+        if (!args.join(" ")) return message.channel.createMessage({ content: `${client.emote.error} Please provide a track or playlist to play.` });
 
         const player = client.manager.create({
             guild: message.guildID,
@@ -50,17 +50,17 @@ module.exports = {
 
             case "TRACK_LOADED":
                 player.queue.add(query.tracks[0]);
-                message.channel.createMessage({ content: `${client.emote.loading} Added ${query.tracks[0]?.title ?? "Unknown title"} to the queue.` });
+                message.channel.createMessage({ content: `${client.emote.ok} Added ${query.tracks[0]?.title ?? "Unknown title"} to the queue.` });
             break;
 
             case "PLAYLIST_LOADED":
                 player.queue.add(query.tracks);
-                message.channel.createMessage({ content: `${client.emote.loading} Added ${query.tracks.length} track(s) in the queue.` });
+                message.channel.createMessage({ content: `${client.emote.ok} Added ${query.tracks.length} track(s) in the queue.` });
             break;
 
             case "SEARCH_RESULT":
                 player.queue.add(query.tracks[0]);
-                message.channel.createMessage({ content: `${client.emote.loading} Added ${query.tracks[0]?.title ?? "Unknown title"} to the queue.` });
+                message.channel.createMessage({ content: `${client.emote.ok} Added ${query.tracks[0]?.title ?? "Unknown title"} to the queue.` });
             break;
         }
 
