@@ -3,13 +3,17 @@ const RichEmbed = require("../../Utility/RichEmbed");
 const cooldowns = new Map();
 
 module.exports = async (client, message) => {
-    if (message.author.bot || !message.guild) return;
+    if (!message.guildID) {
+        const msg = await message.channel.createMessage({ content: `${client.emotes.error} Commands can only run in server not in DM's` });
+        await msg.delete().catch(() => { });
+    }
+    if (message.member.user.bot) return null;
 
     const regex = new RegExp(`^<@!?${client.user.id}> `);
     const prefix = message.content.match(regex) ? message.content.match(regex)[0] : "lov ";
 
     try {
-        if (!message.content.startsWith(prefix)) return;
+        if (!message.content.startsWith(prefix)) return null;
         const args = message.content.slice(prefix.length).split(/ +/g);
         const cmd = args.shift()?.toLowerCase();
         const command = client.commands.get(cmd)
@@ -42,4 +46,6 @@ module.exports = async (client, message) => {
         } catch { }
     // eslint-disable-next-line no-empty
     } catch { }
+
+    return null;
 };
