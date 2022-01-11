@@ -28,7 +28,7 @@ module.exports = {
             voiceChannel: message.member.voiceState.channelID,
             textChannel: message.channel.id,
             volume: 100,
-            selfDeaf: true,
+            selfDeafen: true,
             selfMute: false,
         });
 
