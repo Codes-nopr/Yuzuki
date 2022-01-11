@@ -9,5 +9,7 @@ module.exports = {
         error: ":x:",
         loading: "",
         now: ":thumbsup:",
+        finished: ":wave:",
+        stuck: ":woozy_face:",
      },
 };
