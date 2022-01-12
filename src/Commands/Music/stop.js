@@ -18,8 +18,9 @@ module.exports = {
 
         const autoplay = player.get("autoplay");
         if (autoplay === true) player.set("autoplay", false);
+        player.queue.clear();
         player.stop();
         player.destroy();
-        return null;
+        return message.channel.createMessage({ content: `${client.emote.stop} **${message.author.username}#${message.author.discriminator}** stopped the music, and leaving voice.` });
     },
 };

@@ -11,5 +11,7 @@ module.exports = {
         now: ":thumbsup:",
         finished: ":wave:",
         stuck: ":woozy_face:",
+        stop: ":stop_button:",
+        skip: ":track_next:",
      },
 };
