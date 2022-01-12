@@ -16,7 +16,6 @@ module.exports = {
 
         GuildForceSkip.findOne({
             guild: message.guildID,
-            forceSkipEnabled: "Enabled",
         }, async (error, resultData) => {
             if (error) return message.channel.createMessage({ content: `${client.emote.error} Something went wrong while checking data on database.` });
             if (!resultData) {

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = new mongoose.Schema({
     guild: String,
-    forceSkipEnabled: String,
+    role: String,
 });
 
 module.exports = mongoose.model("GuildForceSkip", Schema);
