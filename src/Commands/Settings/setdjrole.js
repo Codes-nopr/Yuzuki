@@ -1,18 +1,20 @@
 const GuildForceSkip = require("../../Models/GuildForceSkip");
 
 module.exports = {
-    name: "djrole",
-    aliases: ["dj", "djr"],
+    name: "setdjrole",
+    aliases: ["setdj", "setdjr"],
     cooldown: 2,
 
     run: async ({ client, message, args }) => {
         if (!message.member.permissions.has("manageGuild")) {
-            return message.channel.createMessage({ content: `${client.emote.error} I have not permission to join in your voice channel. Required Permission: \`Manage Guild\`` });
+            return message.channel.createMessage({ content: `${client.emote.error} You have not permission to use this command in this server. Required Permission: \`Manage Guild\`` });
         }
 
-        const roleName = args[0];
-        const findRole = roleName || message.guild.roles.find((x) => x.name === roleName)
-        || message.guild.roles.find((x) => x.id === roleName);
+        const restMember = await client.getRESTGuildMember(message.guildID, message.author.id);
+
+        const roleID = args[0];
+        if (!roleID) return message.channel.createMessage({ content: `${client.emote.error} Please specify a role ID.` });
+        if (roleID.length < 18 || roleID.length > 18) return message.channel.createMessage({ content: `${client.emote.error} Are you sure its valid role...?` });
 
         GuildForceSkip.findOne({
             guild: message.guildID,
@@ -22,12 +24,11 @@ module.exports = {
                 // eslint-disable-next-line no-param-reassign
                 resultData = new GuildForceSkip({
                     guild: message.guildID,
-                    role: findRole,
+                    role: roleID,
                 }).save().catch(() => message.channel.createMessage({ content: `${client.emote.error} Something went wrong while saving config to database.` }));
                 return message.channel.createMessage({ content: `${client.emote.ok} DJ role has been enabled for this server.` });
             }
-            resultData.delete().catch(() => message.channel.createMessage({ content: `${client.emote.error} Something went wrong while saving config to database.` }));
-            return message.channel.createMessage({ content: `${client.emote.ok} DJ role has been disabled in this server.` });
+            return message.channel.createMessage({ content: `${client.emote.error} This server already have DJ role configured.` });
         });
         return null;
     },

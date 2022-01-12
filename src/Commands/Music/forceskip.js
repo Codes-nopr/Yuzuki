@@ -13,7 +13,8 @@ module.exports = {
         }, async (error, resultData) => {
             if (error) return message.channel.createMessage({ content: `${client.emote.error} Something went wrong while checking data on database.` });
             if (resultData) {
-                if (!message.member.roles.find((x) => x.name === resultData.role)) return message.channel.createMessage({ content: `${client.emote.error} **${message.author.username}** you can't use forceskip without DJ role.` });
+                if (!message.member.roles.find((x) => x === resultData.role)) return message.channel.createMessage({ content: `${client.emote.error} **${message.author.username}** you can't use forceskip without DJ role.` });
+
                 // eslint-disable-next-line max-len
                 const botVoiceChannel = await client.getRESTGuildMember(message.guildID, client.user.id);
 
