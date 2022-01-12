@@ -7,7 +7,7 @@ module.exports = {
 
     run: async ({ client, message }) => {
         if (!message.member.permissions.has("manageGuild")) {
-            return message.channel.createMessage({ content: `${client.emote.error} I have not permission to join in your voice channel. Required Permission: \`Manage Guild\`` });
+            return message.channel.createMessage({ content: `${client.emote.error} You have not permission to use this command. Required Permission: \`Manage Guild\`` });
         }
 
         GuildSkip.findOne({

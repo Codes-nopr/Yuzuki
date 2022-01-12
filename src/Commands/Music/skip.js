@@ -18,6 +18,7 @@ module.exports = {
             }
         }
         const player = client.manager.get(message.guildID);
+        if (!player || !player.queue.current) return message.channel.createMessage({ content: `${client.emote.error} Not playing anything in voice channel.` });
 
         GuildSkip.findOne({
             guild: message.guildID,
@@ -30,9 +31,6 @@ module.exports = {
             }
             // eslint-disable-next-line max-len
             const voiceUsers = botVoiceChannel.guild.voiceStates.filter((f) => f.id !== client.user.id).length;
-
-            if (!player || !player.queue.current) return message.channel.createMessage({ content: `${client.emote.error} Not playing anything in voice channel.` });
-
             if (voters.find((id) => id === message.author.id)) return message.channel.createMessage({ content: `${client.emote.error} You have alreadyed voted for skip` });
 
             // eslint-disable-next-line max-len
