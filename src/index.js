@@ -5,7 +5,11 @@ const { default: Spotify } = require("better-erela.js-spotify");
 const Apple = require("erela.js-apple");
 const Deezer = require("erela.js-deezer");
 const { readdirSync } = require("fs");
+const mongoose = require("mongoose");
 require("dotenv").config({ path: "../.env" });
+
+// eslint-disable-next-line no-console
+mongoose.connect(process.env.MONGOOSE).catch(console.log);
 
 const client = new Client(process.env.TOKEN, {
     allowedMentions: {
