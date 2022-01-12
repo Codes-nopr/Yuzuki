@@ -58,7 +58,8 @@ module.exports = {
             case "PLAYLIST_LOADED":
                 player.queue.add(query.tracks);
                 message.channel.createMessage({ content: `${client.emote.ok} Added ${query.tracks.length} track(s) in the queue.` });
-                if (!player.playing && !player.paused && !player.queue.size) player.play();
+                if (!player.playing && !player.paused
+                    && player.queue.totalSize === query.tracks.length) player.play();
             break;
 
             case "SEARCH_RESULT":
