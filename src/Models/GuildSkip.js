@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 
-module.exports = new mongoose.Schema({
+const Schema = new mongoose.Schema({
     guild: String,
     voteSkipEnabled: String,
 });
+
+module.exports = mongoose.model("GuildSkip", Schema);

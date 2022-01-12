@@ -1,6 +1,6 @@
 const GuildSkip = require("../../Models/GuildSkip");
 
-const voters = [];
+let voters = [];
 
 module.exports = {
     name: "skip",
@@ -37,7 +37,7 @@ module.exports = {
 
             // eslint-disable-next-line max-len
             if (voters.length === (voiceUsers - 1)) {
-                voters.splice(0, 0);
+                voters = [];
                 player.stop();
                 return message.channel.createMessage({ content: `${client.emote.skip} Skipped **${player.queue.current.title}** | Voted by: **${voiceUsers}** users` });
             }
