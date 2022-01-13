@@ -9,7 +9,7 @@ module.exports = async (client, interaction) => {
 	if (interaction.member.user.bot) return null;
 
 	const args = [];
-	const cmd = client.slashCommands.get(interaction.data.name);
+	const cmd = client.slashCommands.get(interaction?.data?.name);
 	if (interaction instanceof CommandInteraction) {
 		// eslint-disable-next-line no-restricted-syntax
 		for (const option of Object.keys(interaction.data)) {
