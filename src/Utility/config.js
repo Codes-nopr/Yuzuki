@@ -18,5 +18,6 @@ module.exports = {
         cleared: ":boom:",
         forward: ":arrow_right:",
         rewind: ":arrow_left:",
+        skipto: ":arrow_upper_left:",
      },
 };
