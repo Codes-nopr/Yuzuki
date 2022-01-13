@@ -13,5 +13,7 @@ module.exports = {
         stuck: ":woozy_face:",
         stop: ":stop_button:",
         skip: ":track_next:",
+        repeat_track: ":repeat_one:",
+        repeat_queue: ":repeat:",
      },
 };
