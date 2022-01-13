@@ -25,7 +25,7 @@ module.exports = {
             seekTime = player.queue.current.duration - (player.queue.current.duration - 1);
         } else if (seekTime >= player.queue.current.duration * 3) return message.channel.createMessage({ content: `${client.emote.error} You can't skip that much time, pepeSad` });
 
-        if (Number.isNaN(seekTime)) return message.channel.createMessage({ content: `${client.emote.error} Please provide correct time value` });
+        if (Number.isNaN(seekTime)) return message.channel.createMessage({ content: `${client.emote.error} Please provide correct time value.` });
         await player.seek(seekTime);
 
         return message.channel.createMessage({ content: `${client.emote.forward} Forwarded **${ms(seekTime, { long: true })}**` });
