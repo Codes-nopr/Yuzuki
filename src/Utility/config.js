@@ -16,5 +16,6 @@ module.exports = {
         repeat_track: ":repeat_one:",
         repeat_queue: ":repeat:",
         cleared: ":boom:",
+        forward: ":arrow_right:",
      },
 };
