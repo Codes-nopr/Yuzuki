@@ -19,5 +19,9 @@ module.exports = {
         forward: ":arrow_right:",
         rewind: ":arrow_left:",
         skipto: ":arrow_upper_left:",
+        nowplaying: ":play_pause:",
+        npTime: ":timer:",
+        npLength: ":level_slider:",
+        npProgress: ":woman_with_probing_cane:",
      },
 };
