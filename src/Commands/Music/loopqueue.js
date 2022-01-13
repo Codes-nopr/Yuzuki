@@ -1,8 +1,8 @@
 const GuildForceSkip = require("../../Models/GuildForceSkip");
 
 module.exports = {
-    name: "looptrack",
-    aliases: ["lt"],
+    name: "loopqueue",
+    aliases: ["lq"],
     cooldown: 3,
 
     run: async ({ client, message }) => {
@@ -24,8 +24,8 @@ module.exports = {
                 }
                 const player = client.manager.get(message.guildID);
                 if (!player || !player.queue.current) return message.channel.createMessage({ content: `${client.emote.error} Not playing anything in voice channel.` });
-                player.setTrackRepeat(!player.trackRepeat);
-                message.channel.createMessage({ content: `${client.emote.repeat_track} Track repeat has been ${player.trackRepeat ? "**enabled**" : "**disabled**"}.` });
+                player.setQueueRepeat(!player.queueRepeat);
+                message.channel.createMessage({ content: `${client.emote.repeat_queue} Track repeat has been ${player.queueRepeat ? "**enabled**" : "**disabled**"}.` });
             } else {
                 const botVoice = await client.getRESTGuildMember(message.guildID, client.user.id);
 
@@ -36,8 +36,8 @@ module.exports = {
                 }
                 const player = client.manager.get(message.guildID);
                 if (!player || !player.queue.current) return message.channel.createMessage({ content: `${client.emote.error} Not playing anything in voice channel.` });
-                player.setTrackRepeat(!player.trackRepeat);
-                return message.channel.createMessage({ content: `${client.emote.repeat_track} Track repeat has been ${player.trackRepeat ? "**enabled**" : "**disabled**"}.` });
+                player.setQueueRepeat(!player.queueRepeat);
+                return message.channel.createMessage({ content: `${client.emote.repeat_queue} Track repeat has been ${player.queueRepeat ? "**enabled**" : "**disabled**"}.` });
             }
             return null;
         });
