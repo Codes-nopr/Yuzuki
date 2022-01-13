@@ -20,10 +20,10 @@ module.exports = {
         if (Number.isNaN(args[0])) return message.channel.createMessage({ content: `${client.emote.error} Please provide a valid number of the queue.` });
         player.queue.remove(0, parseInt(args[0], 10) - 1);
         await player.stop();
-        client.manager.off("trackStart", () => { });
+        client.manager.off("trackStart", () => { }); // Prevent track start after stop the player
         setTimeout(() => {
             message.channel.createMessage({ content: `${client.emote.skipto} Skipped to **${player.queue.current.title}**` });
-            client.manager.on("trackStart", () => { });
+            client.manager.on("trackStart", () => { }); // We'll send the skipped message first because after stop the track it'll take some time to load another track in client queue, and when done we'll reenable this event and fire it up, kinda small hack lol
         }, 500);
         return null;
     },
