@@ -37,7 +37,7 @@ module.exports = {
             if (voters.length === (voiceUsers - 1)) {
                 voters = [];
                 player.stop();
-                return message.channel.createMessage({ content: `${client.emote.skip} Skipped **${player.queue.current.title}** | Voted by: **${voiceUsers}** users` });
+                return message.channel.createMessage({ content: `${client.emote.skip} Skipped **${player.queue.current.title}** | Voted by: **${voiceUsers > 1 ? voiceUsers : `${message.author.username}#${message.author.discriminator}`}** ${voiceUsers > 1 ? "users" : ""}` });
             }
             voters.push(message.author.id);
             return message.channel.createMessage({ content: `${client.emote.ok} ${message.author.username} requested to skip, vote...` });
