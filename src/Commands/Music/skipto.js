@@ -18,6 +18,9 @@ module.exports = {
 
         if (!args[0]) return message.channel.createMessage({ content: `${client.emote.error} You need to provide in which number of track you want to skip.` });
         if (Number.isNaN(args[0])) return message.channel.createMessage({ content: `${client.emote.error} Please provide a valid number of the queue.` });
+        if (args[0] > player.queue.length) return message.channel.createMessage({ content: `${client.emote.error} Can't skip more than the queue size...` });
+        if (args[0] < (player.queue.length - (player.queue.length - 1))) return message.channel.createMessage({ content: `${client.emote.error} Can't skip less than the last track...` });
+
         player.queue.remove(0, parseInt(args[0], 10) - 1);
         await player.stop();
         client.manager.off("trackStart", () => { }); // Prevent track start after stop the player
