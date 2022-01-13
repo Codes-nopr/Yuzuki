@@ -1,8 +1,8 @@
 const ms = require("ms");
 
 module.exports = {
-    name: "forward",
-    aliases: ["fw"],
+    name: "rewind",
+    aliases: ["rw"],
     cooldown: 3,
 
     run: async ({ client, message, args }) => {
@@ -20,14 +20,13 @@ module.exports = {
 
         const time = args[0];
         if (!time) return message.channel.createMessage({ content: `${client.emote.error} You need to provide a time of position.` });
-        let seekTime = Number(player.position) + ms(time);
-        if (seekTime >= player.queue.current.duration) {
-            seekTime = player.queue.current.duration - (player.queue.current.duration - 1);
-        } else if (seekTime >= player.queue.current.duration * 3) return message.channel.createMessage({ content: `${client.emote.error} You can't forward that much time, pepeSad` });
-
+        let seekTime = Number(player.position) - ms(time);
+        if (seekTime >= player.queue.current.duration - player.position || seekTime < 0) {
+            seekTime = 1;
+        }
         if (Number.isNaN(seekTime)) return message.channel.createMessage({ content: `${client.emote.error} Please provide correct time value.` });
         await player.seek(seekTime);
 
-        return message.channel.createMessage({ content: `${client.emote.forward} Forwarded **${ms(seekTime, { long: true })}**` });
+        return message.channel.createMessage({ content: `${client.emote.rewind} Rewinded **${ms(seekTime, { long: true })}**` });
     },
 };

@@ -17,5 +17,6 @@ module.exports = {
         repeat_queue: ":repeat:",
         cleared: ":boom:",
         forward: ":arrow_right:",
+        rewind: ":arrow_left:",
      },
 };
