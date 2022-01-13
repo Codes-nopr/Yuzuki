@@ -41,7 +41,7 @@ module.exports = {
         switch (query.loadType) {
             case "LOAD_FAILED":
                 if (!player.queue.current) player.destroy();
-                message.channel.createMessage({ content: `${client.emote.error} Something went wrong while trying to load the ${Array.isArray(query?.tracks) ? "playlist" : "track"}.` });
+                message.channel.createMessage({ content: `${client.emote.error} Something went wrong while trying to load the ${Array.isArray(query?.tracks).length > 1 ? "playlist" : "track"}.` });
             break;
 
             case "NO_MATCHES":

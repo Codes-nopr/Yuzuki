@@ -16,6 +16,10 @@ module.exports = {
         const player = client.manager.get(message.guildID);
         if (!player || !player.queue.current) return message.channel.createMessage({ content: `${client.emote.error} Not playing anything in voice channel.` });
 
-        
-    }
-}
+        if (!player.queue?.previous?.uri) return message.channel.createMessage({ content: `${client.emote.error} There's actually no track that previously played...` });
+        const query = await player.search(player.queue.previous.uri, message.author);
+        if (query.loadType === "LOAD_FAILED") return message.channel.createMessage({ content: `${client.emote.error} Something went wrong while trying to load the ${Array.isArray(query?.tracks) ? "playlist" : "track"}.` });
+        player.queue.add(Array.isArray(query?.tracks).length > 1 ? query.tracks : query.tracks[0]);
+        return message.channel.createMessage({ content: `${client.emote.ok} Added previous ${Array.isArray(query?.tracks).length > 1 ? "playlist" : player.queue.previous.title}` });
+    },
+};
