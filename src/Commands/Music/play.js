@@ -13,10 +13,10 @@ module.exports = {
             return message.channel.createMessage({ content: `${client.emote.error} I have not permission to speak in your voice channel. Required Permission: \`Speak\`` });
         }
 
-        const botVoiceChannel = await client.getRESTGuildMember(message.guildID, client.user.id);
+        const botVoice = await client.getRESTGuildMember(message.guildID, client.user.id);
 
-        if (botVoiceChannel.voiceState.channelID) {
-            if (botVoiceChannel.voiceState.channelID !== message.member.voiceState.channelID) {
+        if (botVoice.voiceState.channelID) {
+            if (botVoice.voiceState.channelID !== message.member.voiceState.channelID) {
                 return message.channel.createMessage({ content: `${client.emote.error} You are not connected to the same voice channel.` });
             }
         }
