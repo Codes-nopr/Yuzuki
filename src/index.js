@@ -1,5 +1,5 @@
 /* eslint-disable import/no-dynamic-require */
-const { Client } = require("eris");
+const { Client, Collection } = require("eris");
 const { Manager } = require("erela.js");
 const { default: Spotify } = require("better-erela.js-spotify");
 const Apple = require("erela.js-apple");
@@ -24,8 +24,7 @@ const client = new Client(process.env.TOKEN, {
     restMode: true,
 });
 
-client.commands = new Map();
-client.slashCommands = new Map();
+client.commands = new Collection();
 client.nodes = require("./Nodes/nodes.json");
 client.config = require("./Utility/config");
 

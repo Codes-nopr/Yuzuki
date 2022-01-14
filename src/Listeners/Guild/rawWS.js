@@ -1,1 +1,1 @@
-module.exports = (client, d) => client.manager.updateVoiceState(d);
+module.exports = (client, packet) => client.manager.updateVoiceState(packet);

@@ -35,5 +35,6 @@ module.exports = {
         infoQueue: ":information_source:",
         alreadyShuffled: ":face_with_raised_eyebrow:",
         shuffled: ":postal_horn:",
+        cooldown: ":hourglass:",
      },
 };

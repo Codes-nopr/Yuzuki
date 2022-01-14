@@ -30,7 +30,8 @@ module.exports = async (client, message) => {
             if (now < then) {
                 const timeLeft = (then - now) / 1000;
                 // eslint-disable-next-line consistent-return
-                return message.channel.send({ embeds: [new RichEmbed().setColor(client.color.color).setDescription(`Wooah, please wait **${timeLeft.toFixed(2)}** seconds before using this command.`)] });
+                const msg = await message.channel.createMessage({ content: `${client.emote.cooldown} Wooah, please wait **${timeLeft.toFixed(2)}** seconds before using ${command.name} command.` });
+                setTimeout(() => msg.delete(), 3000);
             }
         }
 
