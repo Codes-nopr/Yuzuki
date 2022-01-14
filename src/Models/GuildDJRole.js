@@ -5,4 +5,4 @@ const Schema = new mongoose.Schema({
     role: String,
 });
 
-module.exports = mongoose.model("GuildForceSkip", Schema);
+module.exports = mongoose.model("GuildDJRole", Schema);

@@ -1,4 +1,4 @@
-const GuildForceSkip = require("../../Models/GuildDJRole");
+const GuildDJRole = require("../../Models/GuildDJRole");
 
 module.exports = {
     name: "looptrack",
@@ -8,7 +8,7 @@ module.exports = {
     run: async ({ client, message }) => {
         if (!message.member.voiceState.channelID) return message.channel.createMessage({ content: `${client.emote.error} You need to be in a voice channel before running this command.` });
 
-        GuildForceSkip.findOne({
+        GuildDJRole.findOne({
             guild: message.guildID,
         }, async (error, resultData) => {
             if (error) return message.channel.createMessage({ content: `${client.emote.error} Something went wrong while checking data on database.` });
