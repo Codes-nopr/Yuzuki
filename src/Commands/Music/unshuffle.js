@@ -18,6 +18,6 @@ module.exports = {
 
         player.queue.clear();
         player.get("beforeshuffle").forEach((e) => player.queue.add(e));
-        return message.channel.createMessage({ content: `${client.emote.ok} Unshuffled **${player.queue.length}** tracks.` });
+        return message.channel.createMessage({ content: `${client.emote.shuffled} Unshuffled **${player.queue.length}** tracks.` });
     },
 };
