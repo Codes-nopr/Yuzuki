@@ -33,5 +33,7 @@ module.exports = {
         queueList: ":clipboard:",
         npQueue: ":microphone2:",
         infoQueue: ":information_source:",
+        alreadyShuffled: ":face_with_raised_eyebrow:",
+        shuffled: ":postal_horn:",
      },
 };
