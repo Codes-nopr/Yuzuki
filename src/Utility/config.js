@@ -27,5 +27,6 @@ module.exports = {
         doing: ":hourglass_flowing_sand:",
         pause: ":pause_button:",
         resume: ":play_pause:",
+        remove: ":scissors:",
      },
 };
