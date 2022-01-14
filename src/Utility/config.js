@@ -25,5 +25,7 @@ module.exports = {
         npProgress: ":woman_with_probing_cane:",
         autoplay: ":infinity:",
         doing: ":hourglass_flowing_sand:",
+        pause: ":pause_button:",
+        resume: ":play_pause:",
      },
 };
