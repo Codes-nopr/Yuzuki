@@ -1,12 +1,10 @@
 module.exports = async (client, player, oldChannel, newChannel) => {
-    if (!newChannel) {
+    if (newChannel || !newChannel) {
         try {
             player.destroy();
+            return null;
         // eslint-disable-next-line no-empty
         } catch { }
     }
-    if (newChannel) {
-        player.setVoiceChannel(newChannel);
-        setTimeout(() => player.pause(false), 1500);
-    }
+    return null;
 };

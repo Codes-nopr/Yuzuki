@@ -1,4 +1,4 @@
-const GuildForceSkip = require("../../Models/GuildForceSkip");
+const GuildDJRole = require("../../Models/GuildDJRole");
 
 module.exports = {
     name: "freedjrole",
@@ -10,7 +10,7 @@ module.exports = {
             return message.channel.createMessage({ content: `${client.emote.error} You have not permission to use this command in this server. Required Permission: \`Manage Guild\`` });
         }
 
-        GuildForceSkip.findOne({
+        GuildDJRole.findOne({
             guild: message.guildID,
         }, async (error, resultData) => {
             if (error) return message.channel.createMessage({ content: `${client.emote.error} Something went wrong while checking data on database.` });
