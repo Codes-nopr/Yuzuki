@@ -28,5 +28,6 @@ module.exports = {
         pause: ":pause_button:",
         resume: ":play_pause:",
         remove: ":scissors:",
+        seek: ":cinema:",
      },
 };
