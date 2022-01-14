@@ -38,4 +38,4 @@ function convertTime(duration) {
     return `${hours}:${minutes}:${seconds}`;
 }
 
-module.exports = { createProgressBar, format };
+module.exports = { createProgressBar, format, convertTime };

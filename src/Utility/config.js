@@ -29,5 +29,9 @@ module.exports = {
         resume: ":play_pause:",
         remove: ":scissors:",
         seek: ":cinema:",
+        perTrack: ":small_blue_diamond:",
+        queueList: ":clipboard:",
+        npQueue: ":microphone2:",
+        infoQueue: ":information_source:",
      },
 };
