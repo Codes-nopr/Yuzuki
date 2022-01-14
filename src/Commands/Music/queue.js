@@ -22,11 +22,12 @@ module.exports = {
         if (!player || !player.queue.current) return message.channel.createMessage({ content: `${client.emote.error} Not playing anything in voice channel.` });
 
         if (!player.queue.length) return message.channel.createMessage({ content: `${client.emote.error} No songs in the queue..? Add some tracks` });
+
         // eslint-disable-next-line prefer-destructuring
         const queue = player.queue;
         const embed = new RichEmbed().setColor(client.color.color);
         const multiple = 10;
-        const page = Number(args[0]) || 1;
+        const page = !Number.isNaN(args[0]) ? Number(args[0]) || 1 : 1;
         const end = page * multiple;
         const start = end - multiple;
         const tracks = queue.slice(start, end);
