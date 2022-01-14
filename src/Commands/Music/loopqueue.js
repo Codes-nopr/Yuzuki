@@ -1,4 +1,4 @@
-const GuildForceSkip = require("../../Models/GuildForceSkip");
+const GuildForceSkip = require("../../Models/GuildDJRole");
 
 module.exports = {
     name: "loopqueue",
