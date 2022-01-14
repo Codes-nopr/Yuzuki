@@ -2,8 +2,8 @@
     "lavanodes": {
         "nodes": [
             {
-                "host": "159.89.191.7",
-                "port": 2054,
+                "host": "lava.link",
+                "port": 80,
                 "password": "youshallnotpass",
                 "retryDelay": 5000,
                 "retryAmount": 10,
