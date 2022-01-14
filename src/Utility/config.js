@@ -23,5 +23,7 @@ module.exports = {
         npTime: ":timer:",
         npLength: ":level_slider:",
         npProgress: ":woman_with_probing_cane:",
+        autoplay: ":infinity:",
+        doing: ":hourglass_flowing_sand:",
      },
 };
