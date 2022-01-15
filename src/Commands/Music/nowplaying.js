@@ -23,6 +23,7 @@ module.exports = {
         const embed = new RichEmbed()
         .setColor(client.color.color)
         .setDescription(`${client.emote.nowplaying} Playing: [**__${player.queue.current.title}__**](${player.queue.current.uri})`)
+        .setThumbnail(`https://img.youtube.com/vi/${player.queue.current.identifier}/mqdefault.jpg`)
         .addField(`${client.emote.npTime} Duration`, `\`${format(player.queue.current.duration)}\``, true)
         .addField(`${client.emote.npLength} Queue length`, `\`${player.queue.length} song(s)\``, true)
         .addField(`${client.emote.npProgress} Progress`, `${createProgressBar(player.position, player.queue.current.duration, 15).Bar} [\`${ms(player.position, { long: false })} / ${ms(player.queue.current.duration, { long: true })}\`]`);

@@ -5,7 +5,7 @@ function createProgressBar(value, maxValue, size) {
     const emptyProgress = size - progress;
 
     const progressText = "▇".repeat(progress);
-    const emptyProgressText = "—".repeat(emptyProgress);
+    const emptyProgressText = "▬".repeat(emptyProgress);
     const percentageText = `${Math.round(percentage * 100)}%`;
 
     const Bar = progressText + emptyProgressText;
