@@ -6,6 +6,7 @@ const Apple = require("erela.js-apple");
 const Deezer = require("erela.js-deezer");
 const { readdirSync } = require("fs");
 const mongoose = require("mongoose");
+require("./Utility/ProcessErrors");
 require("dotenv").config({ path: "../.env" });
 
 // eslint-disable-next-line no-console

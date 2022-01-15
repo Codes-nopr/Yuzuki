@@ -39,6 +39,38 @@ module.exports = {
             },
         ];
 
+        const musicButtonsDisabled = [
+            {
+                type: 1,
+                components: [
+                    {
+                        type: 2,
+                        style: 1,
+                        custom_id: "music",
+                        label: "Commands",
+                        emoji: { name: "🎵" },
+                        disabled: true,
+                    },
+                    {
+                        type: 2,
+                        style: 2,
+                        custom_id: "dj",
+                        label: "Settings",
+                        emoji: { name: "⚙️" },
+                        disabled: true,
+                    },
+                    {
+                        type: 2,
+                        style: 4,
+                        custom_id: "delete",
+                        label: "Delete",
+                        emoji: { name: "🅾️" },
+                        disabled: true,
+                    },
+                ],
+            },
+        ];
+
         const defEmbed = new RichEmbed()
         .setColor(client.color.color)
         .setDescription("Hey! To see help command click on **Commands** button for settings click **Settings** either to delete the message simply click delete.")
@@ -51,6 +83,7 @@ module.exports = {
             embeds: [defEmbed],
             components: [musicButton[0]],
         });
+
         client.on("interactionCreate", async (interaction) => {
             interaction.acknowledge();
             if (interaction instanceof ComponentInteraction) {
@@ -100,18 +133,20 @@ module.exports = {
                             `);
                             await msg.edit({ embeds: [embed] })
                             .catch(() => { });
+                            // eslint-disable-next-line max-len
                     }
 
                     if (interaction.data.component_type === 2
                         && interaction.data.custom_id === "delete") {
                             await msg.delete()
                             .catch(() => { });
+                            client.off("interactionCreate", () => { });
                             client.removeListener("interactionCreate", () => { });
                     }
                 }
             });
 
-        // eslint-disable-next-line max-len
-        // message.channel.createMessage({ embeds: [embed], components: [musicButton[0]] });
+            setTimeout(() => msg.edit({ components: [musicButtonsDisabled[0]] })
+            .catch(() => { }), 30000);
     },
 };
