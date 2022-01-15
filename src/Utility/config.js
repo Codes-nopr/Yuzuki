@@ -36,5 +36,6 @@ module.exports = {
         alreadyShuffled: ":face_with_raised_eyebrow:",
         shuffled: ":postal_horn:",
         cooldown: ":hourglass:",
+        helpCmds: ":orange_book:",
      },
 };
