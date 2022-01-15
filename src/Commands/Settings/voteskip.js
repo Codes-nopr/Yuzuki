@@ -22,7 +22,8 @@ module.exports = {
                 }).save().catch(() => message.channel.createMessage({ content: `${client.emote.error} Something went wrong while saving config to database.` }));
                 message.channel.createMessage({ content: `${client.emote.ok} Vote skip for the server has been enabled.` });
             } else {
-                return message.channel.createMessage({ content: `${client.emote.error} Vote skipped already enabled in this server.` });
+                resultData.delete().catch(() => message.channel.createMessage({ content: `${client.emote.error} Something went wrong while deleting config from database.` }));
+                return message.channel.createMessage({ content: `${client.emote.ok} Vote skip has been disabled.` });
             }
             return null;
         });

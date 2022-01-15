@@ -37,5 +37,6 @@ module.exports = {
         shuffled: ":postal_horn:",
         cooldown: ":hourglass:",
         helpCmds: ":orange_book:",
+        helpDJ: ":gear:",
      },
 };
