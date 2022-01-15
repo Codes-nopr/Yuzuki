@@ -38,5 +38,8 @@ module.exports = {
         cooldown: ":hourglass:",
         helpCmds: ":orange_book:",
         helpDJ: ":gear:",
+        src: ":leaves:",
+        discordServer: ":eyes:",
+        createdBy: ":bookmark:",
      },
 };

@@ -42,8 +42,11 @@ module.exports = {
         const defEmbed = new RichEmbed()
         .setColor(client.color.color)
         .setDescription("Hey! To see help command click on **Commands** button for settings click **Settings** either to delete the message simply click delete.")
-        .setThumbnail(`https://cdn.discordapp.com/avatars/${client.user.id}/${client.user?.avatar ?? "0"}.png?size=1024`);
-        .addField("Source", "My source code can be found [here](")
+        .setThumbnail(`https://cdn.discordapp.com/avatars/${client.user.id}/${client.user?.avatar ?? "0"}.png?size=1024`)
+        .addField(`${client.emote.src} Source`, "My source code can be found **[here](https://github.com/dragonfirefox/Yuzuki)**")
+        .addField(`${client.emote.discordServer} Discord Server`, "Join my Discord **[here](https://discord.gg/snQ8cUUXk6)**")
+        .addField(`${client.emote.createdBy} Created by`, "**[Yuuki#9130](https://discord.com/channels/@me/757925432934006807)**");
+
         const msg = await message.channel.createMessage({
             embeds: [defEmbed],
             components: [musicButton[0]],
