@@ -41,5 +41,6 @@ module.exports = {
         src: ":leaves:",
         discordServer: ":eyes:",
         createdBy: ":bookmark:",
+        invite: ":money_with_wings:",
      },
 };
