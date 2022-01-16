@@ -1,5 +1,5 @@
 module.exports = {
-    name: "lovenightcore",
+    name: "party",
     aliases: [],
     cooldown: 3,
 
@@ -16,12 +16,12 @@ module.exports = {
         const player = client.manager.get(message.guildID);
         if (!player || !player.queue.current) return message.channel.createMessage({ content: `${client.emote.error} Not playing anything in voice channel.` });
 
-        if (player.lovenightcore) {
-            message.channel.createMessage({ content: `${client.emote.removingFilter} Removing lovenightcore filter, please wait...` });
-            player.lovenightcore = !player.lovenightcore;
+        if (player.party) {
+            message.channel.createMessage({ content: `${client.emote.removingFilter} Removing party filter, please wait...` });
+            player.party = !player.party;
         } else {
-            message.channel.createMessage({ content: `${client.emote.ok} Activating lovenightcore filter, please wait...` });
-            player.lovenightcore = !player.lovenightcore;
+            message.channel.createMessage({ content: `${client.emote.ok} Activating party filter, please wait...` });
+            player.party = !player.party;
         }
         return null;
     },
