@@ -1,5 +1,5 @@
 module.exports = {
-    name: "classical",
+    name: "eightd",
     aliases: [],
     cooldown: 3,
 
@@ -16,12 +16,12 @@ module.exports = {
         const player = client.manager.get(message.guildID);
         if (!player || !player.queue.current) return message.channel.createMessage({ content: `${client.emote.error} Not playing anything in voice channel.` });
 
-        if (player.classical) {
-            message.channel.createMessage({ content: `${client.emote.removingFilter} Removing classical filter, please wait...` });
-            player.classical = !player.classical;
+        if (player.eightd) {
+            message.channel.createMessage({ content: `${client.emote.removingFilter} Removing eightd filter, please wait...` });
+            player.eightd = !player.eightd;
         } else {
-            message.channel.createMessage({ content: `${client.emote.ok} Activating classical filter, please wait...` });
-            player.classical = !player.classical;
+            message.channel.createMessage({ content: `${client.emote.ok} Activating eightd filter, please wait...` });
+            player.eightd = !player.eightd;
         }
         return null;
     },
