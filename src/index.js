@@ -6,7 +6,7 @@ const Apple = require("erela.js-apple");
 const Deezer = require("erela.js-deezer");
 const { readdirSync } = require("fs");
 const mongoose = require("mongoose");
-const CustomFilters = require("./Utility/Filters");
+const { FilterManager } = require("./Utility/Filters");
 require("./Utility/ProcessErrors");
 require("dotenv").config({ path: "../.env" });
 
@@ -44,7 +44,7 @@ client.manager = new Manager({
         new Spotify(),
         new Deezer({}),
         new Apple(),
-        new CustomFilters(),
+        new FilterManager(),
     ],
     autoPlay: true,
 });
