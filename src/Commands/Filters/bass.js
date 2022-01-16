@@ -1,5 +1,3 @@
-const erela = require("erela.js");
-
 module.exports = {
     name: "bass",
     aliases: [],
@@ -18,9 +16,13 @@ module.exports = {
         const player = client.manager.get(message.guildID);
         if (!player || !player.queue.current) return message.channel.createMessage({ content: `${client.emote.error} Not playing anything in voice channel.` });
 
-        erela.Structure.extend("Player", (Player) => class extends Player {
-            constructor()
-            super(...arguments)
-        })
-    }
-}
+        if (player.bass) {
+            message.channel.createMessage({ content: `${client.emote.removingFilter} Removing bass filter, please wait...` });
+            player.bass = !player.bass;
+        } else {
+            message.channel.createMessage({ content: `${client.emote.ok} Activating bass filter, please wait...` });
+            player.bass = !player.bass;
+        }
+        return null;
+    },
+};

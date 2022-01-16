@@ -42,5 +42,6 @@ module.exports = {
         discordServer: ":eyes:",
         createdBy: ":bookmark:",
         invite: ":money_with_wings:",
+        removingFilter: ":information_source:",
      },
 };
