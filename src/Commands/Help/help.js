@@ -29,6 +29,14 @@ module.exports = {
                     },
                     {
                         type: 2,
+                        style: 2,
+                        custom_id: "filters",
+                        label: "Filters",
+                        emoji: { name: "📜" },
+                        disabled: false,
+                    },
+                    {
+                        type: 2,
                         style: 4,
                         custom_id: "delete",
                         label: "Delete",
@@ -57,6 +65,14 @@ module.exports = {
                         custom_id: "dj",
                         label: "Settings",
                         emoji: { name: "⚙️" },
+                        disabled: true,
+                    },
+                    {
+                        type: 2,
+                        style: 2,
+                        custom_id: "filters",
+                        label: "Filters",
+                        emoji: { name: "📜" },
                         disabled: true,
                     },
                     {
@@ -142,6 +158,40 @@ module.exports = {
                             .catch(() => { });
                             client.off("interactionCreate", () => { });
                             client.removeListener("interactionCreate", () => { });
+                    }
+
+                    if (interaction.data.component_type === 2
+                        && interaction.data.custom_id === "filters") {
+                            const embed = new RichEmbed()
+                            .setTitle("Music Filters")
+                            .setColor(client.color.color)
+                            .setDescription(`
+                            · **bass**              - Enable / Disable bass filter
+                            · **bassboosthigh**     - Enable / Disable bassboosthigh filter
+                            · **classical**         - Enable / Disable classical filter
+                            · **darkvador**         - Enable / Disable darkvador filter
+                            · **eightd**            - Enable / Disable eightd filter
+                            · **electronic**        - Enable / Disable electronic filter
+                            · **errape**            - Enable / Disable errape filter
+                            · **gaming**            - Enable / Disable gaming filter
+                            · **highfull**          - Enable / Disable highfull filter
+                            · **highvoice**         - Enable / Disable highvoice filter
+                            · **karaoke**           - Enable / Disable karaoke filter
+                            · **lovenightcore**     - Enable / Disable lovenightcore filter
+                            · **nightcore**         - Enable / Disable nightcore filter
+                            · **party**             - Enable / Disable party filter
+                            · **pop**               - Enable / Disable pop filter
+                            · **radiomix**          - Enable / Disable radiomix filter
+                            · **rock**              - Enable / Disable rock filter
+                            · **soft**              - Enable / Disable soft filter
+                            · **superfast**         - Enable / Disable superfast filter
+                            · **treblebass**        - Enable / Disable treblebass filter
+                            · **tremolo**           - Enable / Disable treblebass filter
+                            · **vaporewave**        - Enable / Disable treblebass filter
+                            · **vibrato**           - Enable / Disable treblebass filter
+                            `);
+                            await msg.edit({ embeds: [embed] })
+                            .catch(() => { });
                     }
                 }
             });
