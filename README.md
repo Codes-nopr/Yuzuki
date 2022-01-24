@@ -18,7 +18,7 @@ A Discord music bot based on lavalink using Eris and Erela.js
 - [x] Role wise DJ role support
 - [x] Customizable
 
-Copyright © 2022 dragonfirefox
+Copyright © 2022 wory48
 
 # ♥️
 ![Yuzuki](https://i.imgur.com/lf58BcZ.gif)
